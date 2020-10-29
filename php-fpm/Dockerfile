@@ -813,6 +813,50 @@ RUN if [ ${INSTALL_MYSQL_CLIENT} = true ]; then \
       apt-get -y install default-mysql-client \
 ;fi
 
+
+###########################################################################
+# Encrypt library:
+###########################################################################
+
+# USER root
+
+# ARG INSTALL_PHP_ENCRYPT=false
+
+# RUN if [ ${INSTALL_PHP_ENCRYPT} = true ]; then \
+#       apt-get install -y libmcrypt-dev && \
+#       pecl install mcrypt-1.0.1 && \
+#       docker-php-ext-configure mcrypt \
+#       docker-php-ext-enable mcrypt \
+# ;fi
+# COPY ./mcrypt.ini /usr/local/etc/php/conf.d/mcrypt.ini
+
+
+
+#
+###########################################################################
+# Install Mcrypt
+###########################################################################
+#
+
+USER root
+##### ICI
+# ARG INSTALL_PHP_ENCRYPT=false
+# RUN if [ ${INSTALL_PHP_ENCRYPT} = true ]; then \
+#    apt-get -y install gcc make autoconf libc-dev pkg-config \
+#    pecl install --nodeps mcrypt-snapshot \
+# ;fi
+# COPY ./mcrypt.ini /usr/local/etc/php/conf.d
+
+# ARG INSTALL_PHP_ENCRYPT=false
+# RUN if [ ${INSTALL_PHP_ENCRYPT} = true ]; then \
+#     apt-get update -y && \
+#     apt-get install -y libmcrypt-dev && \
+#     pecl install mcrypt-1.0.1 && \
+#     docker-php-ext-enable mcrypt\
+# ;fi
+# COPY ./mcrypt.ini /usr/local/etc/php/conf.d
+#### FIN
+
 ###########################################################################
 # ping:
 ###########################################################################
